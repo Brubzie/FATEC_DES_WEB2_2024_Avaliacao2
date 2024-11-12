@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `vagas`
 --
-CREATE DATABASE IF NOT EXISTS `vagas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `vagas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `vagas`;
 
 -- --------------------------------------------------------
@@ -29,14 +29,15 @@ USE `vagas`;
 -- Estrutura para tabela `vagas`
 --
 
-CREATE TABLE `vagas` (
-  `id` int NOT NULL,
+CREATE TABLE if NOT EXISTS `vagas` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `nome_empresa` varchar(100) NOT NULL,
   `numero_whatsapp` varchar(20) DEFAULT NULL,
   `email_contato` varchar(30) DEFAULT NULL,
   `descritivo_vaga` varchar(255) DEFAULT NULL,
-  `curso` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `curso` VARCHAR(2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `vagas`

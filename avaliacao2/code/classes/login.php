@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 session_start();
 
 /**
@@ -13,7 +14,7 @@ class Login {
     /**
      * @var string Senha padrão para login.
      */
-    private $password = 'estagio'; 
+    private $password = 'estagio';
     
     /**
      * Verifica as credenciais do usuário.
@@ -23,36 +24,29 @@ class Login {
      * @return bool Retorna TRUE se as credenciais estão corretas, FALSE caso contrário.
      */
     public function verificar_credenciais($name, $password) { 
-        if ($name == $this->name) {
-            if ($password == $this->password) {
-                $_SESSION["logged_in"] = TRUE;
-                return TRUE;
-            }
+        if ($name === $this->name && $password === $this->password) {
+            $_SESSION["logged_in"] = true;
+            return true;
         }
-        return FALSE;
+        return false;
     } 
 
     /**
      * Verifica se o usuário está logado.
      *
-     * @return bool Retorna TRUE se o usuário está logado, chama logout() e redireciona caso contrário.
+     * @return bool Retorna TRUE se o usuário está logado, FALSE caso contrário.
      */
     public function verificar_logado() { 
-        if ($_SESSION["logged_in"]) {
-            return TRUE;
-        }
-        $this->logout();
+        return isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true;
     } 
 
     /**
      * Realiza o logout do usuário.
      *
-     * Destroi a sessão e redireciona para a página de login.
+     * Destroi a sessão do usuário.
      */
     public function logout() { 
+        session_unset();
         session_destroy();
-        header("Location: index.php");
-        exit();
     } 
-} 
-?>
+}
