@@ -4,21 +4,19 @@ require_once 'classes/cadastro.php';
 
 $validador = new Login();
 if (!$validador->verificar_logado()) {
-    echo "Você precisa estar logado para acessar esta página.";
+    echo "Aviso: Realize o login para acessar esta página.";
     exit;
 }
+
 if (isset($_GET['id_vaga'])) {
     $idVaga = $_GET['id_vaga'];
-
-
     $cadastro = new Cadastro();
-
-    $resultado = $cadastro->removerVaga($idVaga);
+    $resultado = $cadastro->remover_vaga($idVaga);
 
     if ($resultado) {
         echo "Vaga removida com sucesso!";
     } else {
-        echo "Erro ao remover a vaga. Tente novamente.";
+        echo "Erro: Falha ao remover a vaga. Tente novamente.";
     }
 
     header('Location: listar.php');

@@ -21,13 +21,13 @@ class Cadastro {
         return $stmt->execute();
     }
 
-    public function listarVagas() {
+    public function listar_vagas() {
         $sql = "SELECT * FROM vagas";
         $stmt = $this->db->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function removerVaga($id) {
+    public function remover_vaga($id) {
         $sql = "DELETE FROM vagas WHERE id = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', var: $id);

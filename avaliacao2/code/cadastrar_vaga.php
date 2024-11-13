@@ -3,10 +3,12 @@ include "classes/login.php";
 require_once 'classes/cadastro.php';
 
 $validador = new Login();
+
 if (!$validador->verificar_logado()) {
     echo "Você precisa estar logado para acessar esta página.";
     exit;
 }
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nomeEmpresa = $_POST['nome_empresa'];

@@ -2,7 +2,11 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Título -->
     <title>Cadastro de Vagas de Estágio</title>
+
+    <!-- CSS Personalizado -->
     <link rel="stylesheet" href="Style/main.css">
 </head>
 <body>
